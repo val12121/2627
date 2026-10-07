@@ -26,5 +26,6 @@ void Analizador::analizar() {
   this-> Html();
 
   this-> FindTags();
+  this-> FindAttributes();
 }
 
