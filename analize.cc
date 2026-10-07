@@ -7,15 +7,24 @@ void Analizador::analizar() {
     return;
   }
 
-  std::stringstream buffer;
-  buffer << file.rdbuf();
-  std::string contenido = buffer.str();
-  contenido_ = contenido;
+  //std::stringstream buffer;
+  //buffer << file.rdbuf();
+  //std::string contenido = buffer.str();
+  //contenido_ = contenido;
+  std::string contenido = "";
+  std::string linea = "";
 
+  while (std::getline(file, linea)) {
+    texto_.push_back(linea);
+    contenido += linea + "\n";
+  }
+  contenido_ = contenido;
   file.close();
 
   this-> Header();
   this-> Body();
   this-> Html();
+
+  this-> FindTags();
 }
 
